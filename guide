@@ -3,11 +3,7 @@ Build virtual environment:
     vagrant init ubuntu/bionic64
     vagrant up
 
-
-# 
-
-vagrantfile:
-
+# vagrantfile:
     _______________
 
 # -*- mode: ruby -*-
