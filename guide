@@ -38,10 +38,7 @@ end
 _______________
 
 
-# run command and see progress in virtualbox
-vagrant up
-
-# to ssh use 
+# to ssh use command below
 vagrant ssh 
 
 # perform updates
@@ -52,8 +49,7 @@ sudo apt install -y
 sudo apt install -y git
 sudo apt install -y apache2 
 
-# apache server set up 
-# locate using ls /var/wwww/html 
+# apache server set up location /var/wwww/html 
 # navigate to http://localhost:8080/ - opens to Apache2 Ubuntu Default Page
 
 # vagrant ssh
