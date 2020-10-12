@@ -1,0 +1,105 @@
+Build virtual environment:
+
+    vagrant init ubuntu/bionic64
+    vagrant up
+
+
+# 
+
+vagrantfile:
+
+    _______________
+
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+ 
+  # Box settings
+  config.vm.box = "ubuntu/bionic64"
+
+  # Provider settings
+  config.vm.provider "virtualbox" do |vb|
+
+  end
+
+  # Network settings 
+  # 8080 being mac
+  config.vm.network "forwarded_port", guest: 80, host: 8080 
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1" 
+  # config.vm.network "private_network", ip: "192.168.33.10"
+  # config.vm.network "public_network"
+
+  # Folder settings
+  config.vm.synced_folder ".", "/var/www/html"
+
+  # Provision settings
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   apt-get update
+  #   apt-get install -y apache2
+  # SHELL
+end
+_______________
+
+
+# run command and see progress in virtualbox
+vagrant up
+
+# to ssh use 
+vagrant ssh 
+
+# perform updates
+sudo apt update
+
+# installs
+sudo apt install -y
+sudo apt install -y git
+sudo apt install -y apache2 
+
+# apache server set up 
+# locate using ls /var/wwww/html 
+# navigate to http://localhost:8080/ - opens to Apache2 Ubuntu Default Page
+
+# vagrant ssh
+# sudo nano /var/www/html/index.html 
+# change title to Hello World
+
+# vagrant reload
+
+# create index file
+# index.html
+_______________
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello World</h1>
+</body>
+
+</html>
+_______________
+
+# add security to Folder
+ # Folder settings
+  config.vm.synced_folder ".", "/var/www/html", :mount_options => ["dmode=777", "fmode=666"]
+
+# for nfs security 
+ # Folder settings
+  config.vm.synced_folder ".", "/var/www/html", :nfs => {:mount_options => ["dmode=777", "fmode=666"] }
+# password will be system password
+
+# run command to destroy
+vagrant destroy
+
+# run command to rebuild with provison settings commented out
+  # Provision settings
+   config.vm.provision "shell", inline: <<-SHELL
+     apt-get update
+     apt-get install -y apache2
+  SHELL
