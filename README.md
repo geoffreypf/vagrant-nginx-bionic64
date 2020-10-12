@@ -1,35 +1,13 @@
 # Prerequesites 
 
-## Download Vagrant, version 2.2.10
-https://www.vagrantup.com/
-
-## Box required
-https://app.vagrantup.com/ubuntu/boxes/bionic64
-
-
 # Vagrant
 
-- Website: [https://www.vagrantup.com/](https://www.vagrantup.com/)
-- Source: [https://github.com/hashicorp/vagrant](https://github.com/hashicorp/vagrant)
-- HashiCorp Discuss: [https://discuss.hashicorp.com/c/vagrant/24](https://discuss.hashicorp.com/c/vagrant/24)
+- Website: [https://www.vagrantup.com/](https://www.vagrantup.com/) -  Version 2.2.10
+- Box: https://app.vagrantup.com/ubuntu/boxes/bionic64
+- Virtual Machine: https://www.virtualbox.org/
 
-Vagrant is a tool for building and distributing development environments.
-
-Development environments managed by Vagrant can run on local virtualized
-platforms such as VirtualBox or VMware, in the cloud via AWS or OpenStack,
-or in containers such as with Docker or raw LXC.
-
-Vagrant provides the framework and configuration format to create and
-manage complete portable development environments. These development
-environments can live on your computer or in the cloud, and are portable
-between Windows, Mac OS X, and Linux.
 
 ## Quick Start
-
-For the quick-start, we'll bring up a development machine on
-[VirtualBox](https://www.virtualbox.org/) because it is free and works
-on all major platforms. Vagrant can, however, work with almost any
-system such as [OpenStack](https://www.openstack.org/), [VMware](https://www.vmware.com/), [Docker](https://docs.docker.com/), etc.
 
 First, make sure your development machine has
 [VirtualBox](https://www.virtualbox.org/)
