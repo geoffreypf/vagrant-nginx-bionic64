@@ -1,5 +1,4 @@
 Initial Work Area Structure
-    
 mkdir -p ~/vagrant-ansible/provision/roles
 cd ~/vagrant-ansible
 touch Vagrantfile provision/playbook.yml  
