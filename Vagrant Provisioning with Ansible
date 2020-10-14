@@ -1,13 +1,81 @@
-# 
-
-
-# Initial Work Area Structure
-
-Staging area or work area
-
-    vagrant init ubuntu/bionic64
-    vagrant up
+Initial Work Area Structure
     
 mkdir -p ~/vagrant-ansible/provision/roles
 cd ~/vagrant-ansible
 touch Vagrantfile provision/playbook.yml  
+
+Create a basic Ansible structure with Bash commands:
+
+mkdir -p provision/roles/hello_web/{defaults,files,tasks}
+touch provision/roles/hello_web/{defaults/main.yml,tasks/main.yml}
+
+Insert HTML content
+cat <<-'HTML' > provision/roles/hello_web/files/index.html
+<html>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+HTML
+
+Structure like the following:
+~/vagrant-ansible                                                       
+├── Vagrantfile
+└── provision
+    ├── playbook.yml
+    └── roles
+        └── hello_web
+            ├── defaults
+            │   └── main.yml
+            ├── files
+            │   └── index.html
+            └── tasks
+                └── main.yml
+
+Vagrantfile configuration
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic644"
+  config.vm.network "forwarded_port", guest: 80, host: 8086
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "provision/playbook.yml"
+    ansible.verbose = true
+  end
+end
+
+Create the Playbook
+---
+- hosts: all
+  gather_facts: yes
+  become: true
+  roles:
+    - hello_web
+
+Role Defaults
+Within the hello_web role, update default/main.yml with this:
+---
+hello_web:
+  docroot: /var/www/html
+  package: apache2
+  service: apache2
+  
+  Role Task
+   Role Tasks
+From within the hello_web role, update tasks/main.yml with this:
+---
+- name: "Install Web Service"
+  package:
+    name: "{{ hello_web.package }}"
+    state: present
+- name: "Start Web Service"
+  service:
+    name: "{{ hello_web.service }}"
+    state: started
+    enabled: yes
+- name: "Copy Web Content"
+  copy:
+    src: "{{ role_path }}/files/index.html"
+    dest: "{{ hello_web.docroot }}/index.html"
+    
+ Testing
+vagrant up                    # run command
+http://127.0.0.1:8086         # access content
