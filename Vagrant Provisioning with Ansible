@@ -1,0 +1,13 @@
+# 
+
+
+# Initial Work Area Structure
+
+Staging area or work area
+
+    vagrant init ubuntu/bionic64
+    vagrant up
+    
+mkdir -p ~/vagrant-ansible/provision/roles
+cd ~/vagrant-ansible
+touch Vagrantfile provision/playbook.yml  
