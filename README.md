@@ -20,6 +20,7 @@ Build virtual environment:
 - gist is where the code is stored.
       
 ## Vagrantfile code:
+-Configure vagrant file with the following below.
 
      config.vm.box = "ubuntu/bionic64"
      vagrant up config.vm.provision :shell do |shell|
@@ -28,8 +29,11 @@ Build virtual environment:
      shell.args = ["arg1", "arg2", "arg3"]
      shell.path = "https://gist.githubusercontent.com/geoffreypf/6dd705d85dc8adae4eccee571e09542a/raw/88d1666cd22ca0c921205c6c9e819bbfa058a276/provision.sh"
      end
+  
+- Save the file and run the command vagrant up.
      
  ## Configuration for nginx loadbalancer and web servers
+ -Configure vagrant file with the following below.
  
      config.vm.define "lb1" do |lb1|
      lb1.vm.box = "ubuntu/bionic64"
@@ -54,3 +58,5 @@ Build virtual environment:
         shell.path = "https://gist.githubusercontent.com/geoffreypf/b791af32da7ebe9dac53a23bad0e91eb/raw/006478ece0320943d7b4c6fae9c74e0a4ea11d88/provision-web.sh"
      end
     end
+  
+- Save the file and run the command vagrant up.
