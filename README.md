@@ -14,6 +14,16 @@ Build virtual environment:
     vagrant init ubuntu/bionic64
     vagrant up
 
-Note: The above `vagrant up` command will also trigger Vagrant to download the
-`bionic64` box via the specified URL. Vagrant only does this if it detects that
-the box doesn't already exist on your system.
+
+Note: - do loop is being set here as there are multiple tasks being set.
+      - gist is where the code is stored.
+      
+- Vagrantfile code:
+
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.provision :shell do |shell|
+    shell.name = "Provision Script 1"
+    shell.privileged = "false"
+    shell.args = ["arg1", "arg2", "arg3"]
+    shell.path = "https://gist.githubusercontent.com/geoffreypf/6dd705d85dc8adae4eccee571e09542a/raw/88d1666cd22ca0c921205c6c9e819bbfa058a276/provision.sh"
+  end
