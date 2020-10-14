@@ -20,14 +20,16 @@ Note: - do loop is being set here as there are multiple tasks being set.
       
    Vagrantfile code:
 
-    config.vm.box = "ubuntu/bionic64"
-    vagrant up config.vm.provision :shell do |shell|
-    shell.name = "Provision Script 1"
-    shell.privileged = "false"
-    shell.args = ["arg1", "arg2", "arg3"]
-    shell.path = "https://gist.githubusercontent.com/geoffreypf/6dd705d85dc8adae4eccee571e09542a/raw/88d1666cd22ca0c921205c6c9e819bbfa058a276/provision.sh"
-    end
-    
+     config.vm.box = "ubuntu/bionic64"
+     vagrant up config.vm.provision :shell do |shell|
+     shell.name = "Provision Script 1"
+     shell.privileged = "false"
+     shell.args = ["arg1", "arg2", "arg3"]
+     shell.path = "https://gist.githubusercontent.com/geoffreypf/6dd705d85dc8adae4eccee571e09542a/raw/88d1666cd22ca0c921205c6c9e819bbfa058a276/provision.sh"
+     end
+     
+ ## Configuration for nginx loadbalancer and web servers
+ 
      config.vm.define "lb1" do |lb1|
      lb1.vm.box = "ubuntu/bionic64"
      lb1.vm.network "private_network", ip: "10.0.0.10"
