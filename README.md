@@ -15,10 +15,11 @@ Build virtual environment:
     vagrant up
 
 
-Note: - do loop is being set here as there are multiple tasks being set.
-      - gist is where the code is stored.
+### Note: 
+- do loop is being set here as there are multiple tasks being set.
+- gist is where the code is stored.
       
-   Vagrantfile code:
+## Vagrantfile code:
 
      config.vm.box = "ubuntu/bionic64"
      vagrant up config.vm.provision :shell do |shell|
