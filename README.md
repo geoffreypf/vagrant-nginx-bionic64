@@ -43,7 +43,8 @@ Build virtual environment:
      web1.vm.provision :shell do |shell|
        shell.args = "1"
        shell.path = "https://gist.githubusercontent.com/geoffreypf/b791af32da7ebe9dac53a23bad0e91eb/raw/006478ece0320943d7b4c6fae9c74e0a4ea11d88/provision-web.sh"
-     end
+      end
+    end
     
       config.vm.define "web2" do |web2|
       web2.vm.box = "ubuntu/bionic64"
