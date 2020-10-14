@@ -18,12 +18,13 @@ Build virtual environment:
 Note: - do loop is being set here as there are multiple tasks being set.
       - gist is where the code is stored.
       
-- Vagrantfile code:
+      Vagrantfile code:
 
-  config.vm.box = "ubuntu/bionic64"
-  config.vm.provision :shell do |shell|
+    config.vm.box = "ubuntu/bionic64"
+    vagrant up config.vm.provision :shell do |shell|
     shell.name = "Provision Script 1"
     shell.privileged = "false"
     shell.args = ["arg1", "arg2", "arg3"]
     shell.path = "https://gist.githubusercontent.com/geoffreypf/6dd705d85dc8adae4eccee571e09542a/raw/88d1666cd22ca0c921205c6c9e819bbfa058a276/provision.sh"
-  end
+    end
+
